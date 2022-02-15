@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Student>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Semester</th>
+      <th scope="col">Career</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+      @foreach(var obj in Model){
+      <tr class="text-center">
+      <th scope="row">@Html.DisplayFor(s => obj.StudentId)</th>
+      <td>@Html.DisplayFor(s => obj.Student_Name)</td>
+      <td>@Html.DisplayFor(s => obj.Student_Age)</td>
+      <td>@Html.DisplayFor(s => obj.Student_Semester)</td>
+      <td>@Html.DisplayFor(s => obj.Career.Career_Name)</td>
+      <td>
+          <a class="btn btn-warning" asp-controller="Student" asp-action="Edit" asp-route-id="@obj.StudentId"><i class="bi bi-pencil-square"></i> Edit</a>
+            <a class="btn btn-info" asp-controller="Student" asp-action="Detail" asp-route-id="@obj.StudentId"><i class="bi bi-ticket-detailed"></i> Details</a>
+              <a class="btn btn-danger"asp-controller="Student" asp-action="Delete" asp-route-id="@obj.StudentId"><i class="bi bi-x-lg"></i> Delete</a>
+      </td>
+    </tr>
+
+      }
+  </tbody>
+</table>
